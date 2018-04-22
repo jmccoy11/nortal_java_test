@@ -11,6 +11,10 @@ public class Expenditure {
     private Double unitPrice;
     private Double tax;
 
+    public Expenditure() {
+
+    }
+
     public Expenditure(Date date, String supplier, String type, String product, Integer units,
                        Double unitPrice, Double tax) {
         this.date = date;

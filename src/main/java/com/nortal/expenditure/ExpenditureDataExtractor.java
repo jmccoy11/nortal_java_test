@@ -8,6 +8,7 @@ import java.util.List;
 
 import com.nortal.expenditure.model.Expenditure;
 
+import org.apache.commons.lang3.time.DateUtils;
 import org.apache.poi.hssf.util.CellReference;
 import org.apache.poi.ss.usermodel.*;
 
@@ -39,14 +40,7 @@ public class ExpenditureDataExtractor {
                         int columnIndex = cell.getColumnIndex();
                         switch (columnIndex) {
                             case 0:
-                                String dateArray[] = text.split("\\.");
-                                if (dateArray.length == 3) {
-                                    date = new Date(Integer.parseInt(dateArray[2]),
-                                            Integer.parseInt(dateArray[1]),
-                                            Integer.parseInt(dateArray[0]));
-
-                                    expenditureData[0] = date;
-                                }
+                                date = DateUtils.parseDate(text,"dd.MM.yyyy");
                                 break;
                             case 1:
                                 supplier = text;

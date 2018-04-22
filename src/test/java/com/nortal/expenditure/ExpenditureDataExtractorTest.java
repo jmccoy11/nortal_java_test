@@ -15,18 +15,33 @@ import com.nortal.expenditure.model.Expenditure;
 
 public class ExpenditureDataExtractorTest {
 
-//    @Test
-//    public void testDataExtractionWithSimpleData() throws Exception {
-//        // TODO improve test
-//        Expenditure expectedExpenditure = new Expenditure();
-//        expectedExpenditure.setDate(DateUtils.parseDate("14.02.2016","dd.MM.yyyy"));
-//        expectedExpenditure.setSupplier("Conemedia");
-//        expectedExpenditure.setType("Utilities");
+    List<Expenditure> expenditures;
+
+//    ExpenditureDataExtractorTest() {
 //
 //        ExpenditureDataExtractor extractor = new ExpenditureDataExtractor();
-//        InputStream resource = ExpenditureDataExtractorTest.class.getResourceAsStream("/simple-expenditures.xlsx");
-//        List<Expenditure> expenditures = extractor.readFromFile(resource);
-//
-//        assertThat(expenditures, contains(expectedExpenditure));
+//        InputStream resource = ExpenditureDataExtractorTest.class.getResourceAsStream(
+//                "/elbonia-defence-expenditures.xlsx");
+//        this.expenditures = extractor.readFromFile(resource);
 //    }
+
+    @Test
+    public void testDataExtractionWithSimpleData() throws Exception {
+        // TODO improve test
+        Expenditure expectedExpenditure = new Expenditure();
+        expectedExpenditure.setDate(DateUtils.parseDate("14.02.2016","dd.MM.yyyy"));
+        expectedExpenditure.setSupplier("Conemedia");
+        expectedExpenditure.setType("Utilities");
+        expectedExpenditure.setProduct("Gloves");
+        expectedExpenditure.setUnits(1496);
+        expectedExpenditure.setUnitPrice(10.0);
+        expectedExpenditure.setTax(0.15);
+
+        ExpenditureDataExtractor extractor = new ExpenditureDataExtractor();
+        InputStream resource = ExpenditureDataExtractorTest.class.getResourceAsStream(
+                "/simple-expenditures.xlsx");
+        List<Expenditure> simpleExpenditures = extractor.readFromFile(resource);
+
+        assertThat(simpleExpenditures, contains(expectedExpenditure));
+    }
 }
