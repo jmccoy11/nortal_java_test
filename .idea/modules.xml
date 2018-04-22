@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-<<<<<<< HEAD
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nortal_java_test.iml" filepath="$PROJECT_DIR$/.idea/modules/nortal_java_test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nortal_java_test_main.iml" filepath="$PROJECT_DIR$/.idea/modules/nortal_java_test_main.iml" group="nortal_java_test" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/nortal_java_test_test.iml" filepath="$PROJECT_DIR$/.idea/modules/nortal_java_test_test.iml" group="nortal_java_test" />
-=======
-      <module fileurl="file://$PROJECT_DIR$/nortal_java_test.iml" filepath="$PROJECT_DIR$/nortal_java_test.iml" />
->>>>>>> d063cda95ab43f7d5c81b1a86331525aed91c8ef
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/java-elbonia-expenditures.iml" filepath="$PROJECT_DIR$/.idea/modules/java-elbonia-expenditures.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/java-elbonia-expenditures_main.iml" filepath="$PROJECT_DIR$/.idea/modules/java-elbonia-expenditures_main.iml" group="java-elbonia-expenditures" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/java-elbonia-expenditures_test.iml" filepath="$PROJECT_DIR$/.idea/modules/java-elbonia-expenditures_test.iml" group="java-elbonia-expenditures" />
     </modules>
   </component>
 </project>
