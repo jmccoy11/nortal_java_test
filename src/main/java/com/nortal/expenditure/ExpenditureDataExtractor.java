@@ -2,7 +2,6 @@ package com.nortal.expenditure;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -25,8 +24,7 @@ public class ExpenditureDataExtractor {
             DataFormatter formatter = new DataFormatter();
             Sheet sheet = workbook.getSheetAt(0);
             for(Row row : sheet) {
-                if(row.getRowNum() != 0) {
-                    Object[] expenditureData = new Object[7];
+                if(row.getRowNum() != 0) { // Don't grab the first row since it's the column headings
                     Date date = null;
                     String supplier = null;
                     String type = null;

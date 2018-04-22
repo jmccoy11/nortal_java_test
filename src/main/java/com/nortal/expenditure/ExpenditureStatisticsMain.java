@@ -7,7 +7,8 @@ import com.nortal.expenditure.ExpenditureStatisticsCalculator.ExpenditureStatist
 public class ExpenditureStatisticsMain {
 
     public static void main(String[] args) {
-        InputStream resource = ExpenditureStatisticsMain.class.getResourceAsStream("/elbonia-defence-expenditures.xlsx");
+        InputStream resource = ExpenditureStatisticsMain.class.getResourceAsStream(
+                "/elbonia-defence-expenditures.xlsx");
         ExpenditureStatisticsCalculator calc = new ExpenditureStatisticsCalculator();
         ExpenditureStatistics st = calc.calcExpenditureStatistics(resource);
         
