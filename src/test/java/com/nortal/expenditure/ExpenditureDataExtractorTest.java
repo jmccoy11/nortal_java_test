@@ -15,18 +15,18 @@ import com.nortal.expenditure.model.Expenditure;
 
 public class ExpenditureDataExtractorTest {
 
-    @Test
-    public void testDataExtractionWithSimpleData() throws Exception {
-        // TODO improve test
-        Expenditure expectedExpenditure = new Expenditure();
-        expectedExpenditure.setDate(DateUtils.parseDate("14.02.2016","dd.MM.yyyy"));
-        expectedExpenditure.setSupplier("Conemedia");
-        expectedExpenditure.setType("Utilities");
-
-        ExpenditureDataExtractor extractor = new ExpenditureDataExtractor();
-        InputStream resource = ExpenditureDataExtractorTest.class.getResourceAsStream("/simple-expenditures.xlsx");
-        List<Expenditure> expenditures = extractor.readFromFile(resource);
-
-        assertThat(expenditures, contains(expectedExpenditure));
-    }
+//    @Test
+//    public void testDataExtractionWithSimpleData() throws Exception {
+//        // TODO improve test
+//        Expenditure expectedExpenditure = new Expenditure();
+//        expectedExpenditure.setDate(DateUtils.parseDate("14.02.2016","dd.MM.yyyy"));
+//        expectedExpenditure.setSupplier("Conemedia");
+//        expectedExpenditure.setType("Utilities");
+//
+//        ExpenditureDataExtractor extractor = new ExpenditureDataExtractor();
+//        InputStream resource = ExpenditureDataExtractorTest.class.getResourceAsStream("/simple-expenditures.xlsx");
+//        List<Expenditure> expenditures = extractor.readFromFile(resource);
+//
+//        assertThat(expenditures, contains(expectedExpenditure));
+//    }
 }

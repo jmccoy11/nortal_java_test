@@ -1,13 +1,15 @@
 package com.nortal.expenditure;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import com.nortal.expenditure.model.Expenditure;
 
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.hssf.util.CellReference;
+import org.apache.poi.ss.usermodel.*;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,14 +18,66 @@ public class ExpenditureDataExtractor {
     private static final Logger LOG = LoggerFactory.getLogger(ExpenditureDataExtractor.class);
 
     public List<Expenditure> readFromFile(InputStream inputStream) {
-        // TODO needs more implementation. See Apache POI documentation for further details
+        List<Expenditure> expendituresList = new ArrayList<>();
 
         try (Workbook workbook = WorkbookFactory.create(inputStream)) {
+            DataFormatter formatter = new DataFormatter();
+            Sheet sheet = workbook.getSheetAt(0);
+            for(Row row : sheet) {
+                if(row.getRowNum() != 0) {
+                    Object[] expenditureData = new Object[7];
+                    Date date = null;
+                    String supplier = null;
+                    String type = null;
+                    String product = null;
+                    Integer units = null;
+                    Double unitPrice = null;
+                    Double tax = null;
+                    for (Cell cell : row) {
+                        CellReference cellRef = new CellReference(row.getRowNum(), cell.getColumnIndex());
+                        String text = formatter.formatCellValue(cell);
+                        int columnIndex = cell.getColumnIndex();
+                        switch (columnIndex) {
+                            case 0:
+                                String dateArray[] = text.split("\\.");
+                                if (dateArray.length == 3) {
+                                    date = new Date(Integer.parseInt(dateArray[2]),
+                                            Integer.parseInt(dateArray[1]),
+                                            Integer.parseInt(dateArray[0]));
+
+                                    expenditureData[0] = date;
+                                }
+                                break;
+                            case 1:
+                                supplier = text;
+                                break;
+                            case 2:
+                                type = text;
+                                break;
+                            case 3:
+                                product = text;
+                                break;
+                            case 4:
+                                units = Integer.parseInt(text);
+                                break;
+                            case 5:
+                                unitPrice = Double.parseDouble(text);
+                                break;
+                            case 6:
+                                tax = Double.parseDouble(text);
+                                tax = tax/100;
+                                break;
+                        }
+                    }
+                    Expenditure expenditure = new Expenditure(date, supplier, type, product, units, unitPrice, tax);
+                    expendituresList.add(expenditure);
+                }
+            }
         } catch (Exception e) {
             LOG.error("Error processing stream", e);
         }
 
-        return Collections.emptyList();
+        return expendituresList;
     }
 
 }

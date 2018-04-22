@@ -13,6 +13,9 @@ public class ExpenditureStatisticsCalculator {
     public ExpenditureStatistics calcExpenditureStatistics(InputStream expenditureStream) {
         List<Expenditure> exp = new ExpenditureDataExtractor().readFromFile(expenditureStream);
         // TODO needs more implementation
+        for (Expenditure expenditure : exp) {
+            System.out.println(expenditure);
+        }
 
         return new ExpenditureStatistics();
     }
