@@ -27,7 +27,6 @@ public class ExpenditureDataExtractorTest {
 
     @Test
     public void testDataExtractionWithSimpleData() throws Exception {
-        // TODO improve test
         Expenditure expectedExpenditure = new Expenditure();
         expectedExpenditure.setDate(DateUtils.parseDate("14.02.2016","dd.MM.yyyy"));
         expectedExpenditure.setSupplier("Conemedia");
@@ -86,7 +85,18 @@ public class ExpenditureDataExtractorTest {
     }
 
     @Test
-    public void test4() {
+    public void ensureColumnHeadersNotIncluded() {
+        int indexToTest = 0;
 
+        Expenditure expectedExpenditure = new Expenditure();
+        expectedExpenditure.setSupplier("Brightbean");
+        expectedExpenditure.setType("Aircraft");
+        expectedExpenditure.setProduct("Paper airplane model X10");
+
+        Expenditure testExpenditure = expenditures.get(indexToTest);
+
+        Assert.assertEquals(testExpenditure.getSupplier(), expectedExpenditure.getSupplier());
+        Assert.assertEquals(testExpenditure.getType(), expectedExpenditure.getType());
+        Assert.assertEquals(testExpenditure.getProduct(), expectedExpenditure.getProduct());
     }
 }
